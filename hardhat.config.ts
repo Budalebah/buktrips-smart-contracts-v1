@@ -9,12 +9,16 @@ env.config();
 /** @type import('hardhat/config').HardhatUserConfig */
 const config: HardhatUserConfig = {
   solidity: "0.8.13",
-  defaultNetwork: "polygon_mumbai",
+  defaultNetwork: "matic",
   networks: {
     hardhat: {
     },
     polygon_mumbai: {
       url: "https://rpc-mumbai.maticvigil.com",
+      accounts: [process.env.PRIVATE_KEY as string]
+    },
+    matic: {
+      url: "https://polygon-rpc.com/",
       accounts: [process.env.PRIVATE_KEY as string]
     }
   },

@@ -8,6 +8,7 @@ export const CONTRACT = {
   USDC_CONTRACT: process.env.USDC_CONTRACT || '',
   TREASURY_CONTRACT: process.env.TREASURY_CONTRACT || '',
   BUK_WALLET: process.env.BUK_WALLET || '',
+  ADMIN_WALLET: process.env.ADMIN_WALLET || '',
   SUPPLIER_CONTRACT: process.env.SUPPLIER_CONTRACT || '',
   SUPPLIER_UTILITY_CONTRACT: process.env.SUPPLIER_UTILITY_CONTRACT || '',
 };

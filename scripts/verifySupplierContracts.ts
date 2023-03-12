@@ -1,16 +1,18 @@
 import * as hre from "hardhat";
 import { CONTRACT } from "../utils/config";
 import { utils } from "ethers"
+import { Web3Service } from "../utils/functions/web3";
 
 async function main() {
 
   const supplierName = "BukTrips.com Powered by Expedia"
   const name = utils.formatBytes32String("BukTrips.com Powered by Expedia")
+  // const name = "0x42756b54726970732e636f6d20506f7765726564206279204578706564696100"
   const data = {
     id: 1,
     name,
     contractName: supplierName,
-    uri: "https://ipfs.io/ipfs/bafkreia3cbw2xztf2xyl4ivuxhbtxa3xjlbpvk4eyolbkzhlnpnclgsa3q",
+    uri: "https://ipfs.io/ipfs/bafkreiatlnjlu5kq3ixdpoyxgqyvh2pm3bxovnaay5qvkjc536pqv4geay",
   }
 
   //Verify Supplier Contract
@@ -21,7 +23,7 @@ async function main() {
       data.contractName,
       data.id,
       data.name,
-      CONTRACT.BUK_WALLET,
+      CONTRACT.ADMIN_WALLET,
       CONTRACT.SUPPLIER_UTILITY_CONTRACT,
       CONTRACT.FACTORY_CONTRACT,
       data.uri

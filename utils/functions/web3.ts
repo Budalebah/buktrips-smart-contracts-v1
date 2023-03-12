@@ -1,4 +1,4 @@
-import {ethers, Contract} from 'ethers';
+import { ethers, Contract } from 'ethers';
 import { CONTRACT, WALLET } from '../config';
 import { activeChainId, getRPCProvider } from '../constants/chainConfig';
 import FACTORY from '../../artifacts/contracts/FactoryContract.sol/BukTrips.json';
@@ -45,19 +45,20 @@ export class Web3Service {
     return receipt?.transactionHash
   }
 
-  async registerSupplier(_contractName: string, _name: string, _supplier_owner: string, _contract_uri: string): Promise<{tx: string,id: number, supplier_contract: string, utility_contract: string}> {
+  async registerSupplier(_contractName: string, _name: string, _supplier_owner: string, _contract_uri: string): Promise<{ tx: string, id: number, supplier_contract: string, utility_contract: string }> {
     const contract = this.getContract(CONTRACT.FACTORY_CONTRACT, FACTORY.abi);
     const result = await contract.registerSupplier(_contractName, _name, _supplier_owner, _contract_uri);
     const receipt = await result.wait()
     let eventData: any = {}
     for (const event of receipt.events) {
       try {
-        if(event.event === 'RegisterSupplier') {
+        if (event.event === 'RegisterSupplier') {
           eventData = event.args
         }
       } catch (error) {
       }
     }
-    return {tx: receipt?.transactionHash, id: eventData?.id, supplier_contract: eventData?.supplierContract, utility_contract: eventData?.utilityContract}
+    return { tx: receipt?.transactionHash, id: eventData?.id, supplier_contract: eventData?.supplierContract, utility_contract: eventData?.utilityContract }
   }
+
 }
